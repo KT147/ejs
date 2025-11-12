@@ -6,14 +6,14 @@ const port = 3000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
+
 app.get("/", (req, res) => {
   res.render("index.ejs")
 });
 
 app.post("/submit", (req, res) => {
-  res.render('index.ejs', {
-    name: req.body['fName'] + req.body['lName']
-  })
+  const nameLength = req.body['fName'].length + req.body['lName'].length
+  res.render("index.ejs", { nameLength })
 });
 
 
